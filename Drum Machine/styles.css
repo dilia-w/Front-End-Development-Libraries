@@ -1,63 +1,92 @@
-body {
-    font-family: Verdana, sans-serif;
-    background-color: #35136b;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+$background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+$borders: #f36f6f;
+$root: #f3f4f6;
+$pad: #4a90e2;
+$active: #7ed321;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
 }
 
-main {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
+#root {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  height: 100vh;
+  background-color: $root;
 }
 
-h1 {
-    color: #333;
+#drum-machine {
+  background: $background;
+  width: 80%;
+  height: 400px;
+  border: 5px solid $borders;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 100%;
+  align-content: center;
+  justify-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+.drum-pad, .drum-pad-active {
+  border: none;
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+  font-weight: bold;
+  font-size: 2.5em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-input {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
+.drum-pad {
+  background: linear-gradient(145deg, #4a90e2, #007aff);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-button {
-    background-color: #722be3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline-block;
+.drum-pad-active {
+  background: linear-gradient(145deg, #7ed321, #a0d911);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
 }
 
-button:hover {
-    background-color: #35136b;
+#display {
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  height: 50px;
+  width: 90%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5em;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #555;
+#container-bank, #container-interface {
+  width: 100%;
+  display: grid;
+}
+
+#container-bank {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+}
+
+#container-interface {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-content: center;
 }
